@@ -4,7 +4,7 @@ This simple calculator takes only three arguments, two numbers and an operator. 
 <br>
 
 ```bash
-cargo run <first-number> <operator> <second-number>
+cargo run <first-number> <operator> <second-number> <...>
 
 # If you want to run a release version first run 
 cargo build --release
