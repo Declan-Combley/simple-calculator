@@ -1,30 +1,21 @@
-use std::env::{args, Args};
+use std::env;
 
 fn main() {
-    let mut args: Args = args();
+    let args: Vec<String> = env::args().collect();
 
-    let first = args.nth(1).unwrap();
-    let operator = args.nth(0).unwrap().chars().next().unwrap();
-    let second = args.nth(0).unwrap();
-
-    let first_number = first.parse::<f32>().unwrap();
-    let second_number = second.parse::<f32>().unwrap();
-
-    let result = operate(operator, first_number, second_number);
-
-    println!("{:?}", output(first_number, operator, second_number, result));
-}
-
-fn operate(operator: char, first_number: f32, second_number: f32) -> f32 {
-    match operator {
-        '+' => first_number + second_number,
-        '-' => first_number - second_number,
-        '/' => first_number / second_number,
-        '*'| 'x' | 'X' => first_number * second_number,
-        _ => panic!("Invalid Operator Used")
+    match args.len() {
+        // incorrect args given 
+        1 | 2 | 3 => panic!("Expected 3 or more arguments"),
+        // all other cases
+        _ => get_numbers(args.len()) 
     }
 }
 
-fn output(first_number: f32, operator: char, second_number: f32, result: f32) -> String {
-    format!("{} {} {} = {}", first_number, operator, second_number, result)
+fn get_numbers(arg_len: usize) {
+    let mut input: Vec<String> = Vec::new();
+
+    for argument in env::args() {
+        println!("{}", argument);
+        input.push(argument);
+    }
 }
