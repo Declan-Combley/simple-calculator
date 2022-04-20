@@ -1,5 +1,10 @@
 use std::env;  
 
+fn is_even(x: usize) -> bool {
+    if x % 2 == 0 { return true }
+    false
+}
+
 fn main() {
     let args: Vec<String> = env::args().collect();
 
@@ -14,14 +19,15 @@ fn main() {
             let mut n: usize = 0;
 
             for arg in env::args() {
-               if n % 2 != 0 { numbers.push(arg.parse().unwrap()) } else { operators.push(arg) }
+               if is_even(n) == false { numbers.push(arg.parse().unwrap()) } 
+               else { operators.push(arg) }
                n = n + 1;
             }
             operators.remove(0);
-
-            for operator in operators { println!("{:?}", operator) };
-            for number in numbers { println!("{:?}", number) };
-            println!("done...");
         }
     };
+}
+
+fn order_operator(operator: Vec<String>) -> Vec<String> {
+    operator
 }
