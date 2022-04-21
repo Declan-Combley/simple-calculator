@@ -45,8 +45,10 @@ fn calculate_pair(number_1: f64, number_2: f64, operator: char) -> f64 {
     match operator {
         '+' => return number_1 + number_2,
         '-' => return number_1 - number_2,
-        'x' | 'X' => return number_1 * number_2,
+        'x' => return number_1 * number_2,
         '/' => return number_1 / number_2,
+        '%' => return number_1 % number_2,
+        '^' => return f64::powf(number_1, number_2),
         _ => panic!("Invalid operator"),
     }
 }
