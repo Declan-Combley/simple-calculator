@@ -1,13 +1,13 @@
 # Simple Calculator
-This simple calculator takes only three arguments, two numbers and an operator. To run it either ./ into the target binary or by using cargo.
+This calculator takes only floats, integers and operators, no algebra yet. Use cargo to run it with the what you want to calculate as an argument, just be sure not to use x for multiplication.
 
 <br>
 
 ```bash
-cargo run <first-number> <operator> <second-number> <...>
+cargo run <first-number> <operator> <second-number> <etc...>
 
 # If you want to run a release version first run 
 cargo build --release
 
-./target/release/calculator <first-number> <operator> <second-number>
+./target/release/calculator <math>
 ```
