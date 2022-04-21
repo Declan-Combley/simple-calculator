@@ -24,11 +24,24 @@ fn main() {
                n = n + 1;
             }
             operators.remove(0);
+
+            get_pairs(numbers, operators);
         }
     };
 }
 
-fn calculate(number_1: f64, number_2: f64, operator: char) -> f64 {
+// -> (n1, n2, op)
+fn get_pairs(numbers: Vec<f64>, operators: Vec<char>) {
+    let mut n: usize = 0;
+    let mut len: usize = numbers.len();
+
+    while n < len - 1{
+        println!("{} {} {}", numbers[n], operators[n], numbers[n + 1]);
+        n = n + 1;
+    } 
+}
+
+fn calculate_pair(number_1: f64, number_2: f64, operator: char) -> f64 {
     match operator {
         '+' => return number_1 + number_2,
         '-' => return number_1 - number_2,
