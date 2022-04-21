@@ -14,13 +14,13 @@ fn main() {
         // all other cases
         _ => {
             let mut numbers: Vec<f64> = Vec::new(); 
-            let mut operators: Vec<String> = Vec::new();
+            let mut operators: Vec<char> = Vec::new();
 
             let mut n: usize = 0;
 
             for arg in env::args() {
-               if is_even(n) == false { numbers.push(arg.parse().unwrap()) } 
-               else { operators.push(arg) }
+               if is_even(n) == false { numbers.push(arg.parse::<f64>().unwrap()) } 
+               else { operators.push(arg.chars().next().unwrap()); }
                n = n + 1;
             }
             operators.remove(0);
@@ -28,6 +28,14 @@ fn main() {
     };
 }
 
-fn order_operator(operator: Vec<String>) -> Vec<String> {
-    operator
+fn calculate(number_1: f64, number_2: f64, operator: char) -> f64 {
+    match operator {
+        '+' => return number_1 + number_2,
+        '-' => return number_1 - number_2,
+        'x' | 'X' => return number_1 * number_2,
+        '/' => return number_1 / number_2,
+        _ => panic!("Invalid operator"),
+    }
 }
+
+// fn order_operator(operator: Vec<String>) -> Vec<String> { operator }
