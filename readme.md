@@ -1,5 +1,5 @@
 # Simple Calculator
-This calculator takes only floats, integers and operators, no algebra yet. Use cargo to run it with the what you want to calculate as an argument, just be sure not to use x for multiplication.
+This calculator takes only floats, integers and operators, no algebra yet. Use cargo to run it with what you want to calculate as an argument, just be sure not to use x for multiplication (it will panic).
 
 <br>
 
