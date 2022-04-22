@@ -17,25 +17,29 @@ fn main() {
             let mut operators: Vec<char> = Vec::new();
 
             let mut n: usize = 0;
-
+            
+            // pushes all of the operators and numbers into their own vectors
+            // for now this is done based off of the order of input, in that every second 
+            // argument is going to be an operator, but basic algebra would not be particularly co-operative with that idea
             for arg in env::args() {
-               if is_even(n) == false { numbers.push(arg.parse::<f64>().unwrap()) } 
-               else { operators.push(arg.chars().next().unwrap()); }
-               n = n + 1;
+                if is_even(n) == false { numbers.push(arg.parse::<f64>().unwrap()) } 
+                else { operators.push(arg.chars().next().unwrap()); }
+                n = n + 1;
             }
+            // for some reason `t` is always the first index
             operators.remove(0);
 
-            get_pairs(numbers, operators);
+            order_pairs(numbers, operators);
         }
     };
 }
 
 // -> (n1, n2, op)
-fn get_pairs(numbers: Vec<f64>, operators: Vec<char>) {
+fn order_pairs(numbers: Vec<f64>, operators: Vec<char>) {
     let mut n: usize = 0;
-    let mut len: usize = numbers.len();
-
-    while n < len - 1{
+    let len: usize = numbers.len();
+    
+    while n < len - 1 {
         println!("{} {} {}", numbers[n], operators[n], numbers[n + 1]);
         n = n + 1;
     } 
