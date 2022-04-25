@@ -63,6 +63,7 @@ fn calculate(mut numbers: Vec<f64>, mut operators: Vec<char>) {
         numbers[index + 1],
     ));
 
+    numbers.remove(1);
     numbers.remove(0);
     operators.remove(0);
 
