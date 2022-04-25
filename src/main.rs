@@ -29,39 +29,33 @@ fn main() {
             operators.remove(0); // for some reason `t` is always the first index
 
             //order_pairs(numbers, operators);
-            calculate(numbers, operators)
+            let answer: f64 = calculate(numbers, operators);
+
+            println!("Answer: {}", answer);
         }
     };
 }
 
-// TODO: Make this work
+// TODO: make this function return the values and operators according to the order of operations
 fn _order_pairs(numbers: Vec<f64>, operators: Vec<char>) {
-    let len: usize = numbers.len();
-    let mut index: usize = 0;
+    for number in numbers {
+        println!("{}", number);
+    }
 
-    while index < len - 1 {
-        println!(
-            "{} {} {}",
-            numbers[index],
-            operators[index],
-            numbers[index + 1]
-        );
-        index += 1;
+    for operator in operators {
+        println!("{}", operator);
     }
 }
 
-fn calculate(mut numbers: Vec<f64>, mut operators: Vec<char>) {
+fn calculate(mut numbers: Vec<f64>, mut operators: Vec<char>) -> f64 {
     let len: usize = numbers.len();
     let mut index: usize = 0;
 
-    let mut values: Vec<f64> = Vec::new();
-
-    // calculate the first sum and remove the operator and first two numbers
-    values.push(calculate_pair(
+    let mut values: Vec<f64> = vec![calculate_pair(
         numbers[index],
         operators[index],
         numbers[index + 1],
-    ));
+    )];
 
     numbers.remove(1);
     numbers.remove(0);
@@ -75,10 +69,7 @@ fn calculate(mut numbers: Vec<f64>, mut operators: Vec<char>) {
 
         index += 1;
     }
-
-    for ans in values {
-        println!("{}", { ans });
-    }
+    values[0]
 }
 
 fn calculate_pair(number_1: f64, operator: char, number_2: f64) -> f64 {
