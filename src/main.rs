@@ -29,25 +29,26 @@ fn main() {
             operators.remove(0); // for some reason `t` is always the first index
 
             //order_pairs(numbers, operators);
-            let answer: f64 = calculate(numbers, operators);
+            //let answer: f64 = calculate(numbers, operators);
 
-            println!("Answer: {}", answer);
+            order_pairs(numbers, operators);
+
+            // println!("Answer: {}", answer);
         }
     };
 }
 
 // TODO: make this function return the values and operators according to the order of operations
-fn _order_pairs(numbers: Vec<f64>, operators: Vec<char>) {
-    for number in numbers {
-        println!("{}", number);
-    }
-
-    for operator in operators {
-        println!("{}", operator);
+fn order_pairs(_numbers: Vec<f64>, operators: Vec<char>) {
+    for (index, operator) in operators.iter().enumerate() {
+        match operator {
+            'x' | '/' | '%' | '^' => println!("{} needs to move", operators[index]),
+            _ => println!("{}", operators[index]),
+        }
     }
 }
 
-fn calculate(mut numbers: Vec<f64>, mut operators: Vec<char>) -> f64 {
+fn _calculate(mut numbers: Vec<f64>, mut operators: Vec<char>) -> f64 {
     let len: usize = numbers.len();
     let mut index: usize = 0;
 
